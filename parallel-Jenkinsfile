@@ -55,6 +55,12 @@ pipeline {
                     }
                     
                 }
-        
+        stage('anas') {
+                   
+                    steps {
+                        echo "ansaing..."
+                    }
+                    
+                }
     }
 }
