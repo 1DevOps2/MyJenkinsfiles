@@ -1,8 +1,8 @@
 pipeline {
     agent any
 	environment {
-  RELEASE_NOTES = sh (script: """git log -1 --pretty=%B""",  returnStdout:true)
-   
+  		RELEASE_NOTES = sh (script: """git log -1 --pretty=%B""",  returnStdout:true)
+		IAM_COMMIT = 'build' 
 }
     stages {
 	     stage('commit verification') {
@@ -29,7 +29,7 @@ pipeline {
    
         stage('Deploy') {
 		
-		when { expression { "${RELEASE_NOTES}" == 'build ' } }
+		when { expression { "${RELEASE_NOTES}" == "${IAM_COMMIT}" } }
             steps {
                 echo 'Deploying...'
             }
