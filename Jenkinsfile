@@ -33,7 +33,8 @@ pipeline {
         }
    
         stage('Deploy') {
-		when { expression { "${iamcomit}" == "build" } }
+		
+		when{ expression {env.iamcomit == 'build'}}
             steps {
                 echo 'Deploying...'
             }
