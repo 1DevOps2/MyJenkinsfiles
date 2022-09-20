@@ -6,6 +6,23 @@ pipeline {
    deployNexusArtifact = true
 }
     stages {
+	     stage('commit verification') {
+            steps {
+                sh '''#!/bin/bash
+		res=$(git log -1 --pretty=%B)
+                     if echo "$res" | grep -i ^build$; then
+                      echo "Commit Matched -->  build=$res"
+                      
+                   else
+                      echo "Commit not Matched -->  build=$res"
+                      echo $res
+                      exit 1
+                      
+                   fi
+		'''
+            }
+        }
+	    
         stage('Build') {
             steps {
                 echo 'Building...'
