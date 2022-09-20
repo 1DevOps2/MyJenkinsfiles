@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-  
+  iamcommit = 'abc'
    runSonarScan = true
    deployNexusArtifact = true
 }
@@ -26,14 +26,14 @@ pipeline {
 	    
         stage('Build') {
             steps {
-                sh 'res=$(git log -1 --pretty=%B)'
-		    echo "$res"
+                sh 'iamcomit=$(git log -1 --pretty=%B)'
+		    
 		    
             }
         }
    
         stage('Deploy') {
-		when { expression { "${iamcommit}" == "build" } }
+		when { expression { "${iamcomit}" == "build" } }
             steps {
                 echo 'Deploying...'
             }
