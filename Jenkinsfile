@@ -17,7 +17,7 @@ pipeline {
         }
         
         stage('Testing') {
-		when { expression { "${runSonarScan}" == 'false' } }
+		when { expression { "${runSonarScan}" == 'true' } }
             steps {
                 echo 'Testing...'
             }
