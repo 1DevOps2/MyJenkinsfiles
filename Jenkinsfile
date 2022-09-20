@@ -6,14 +6,7 @@ pipeline {
 		runSonarScan = true
 		deployNexusArtifact = true
 }
-	stages {
-   
-        stage('Deploy') {
-		
-		when { expression { "${RELEASE_NOTES}" == 'true' } }
-            steps {
-                echo 'Deploying...'
-            }
+	
         }
         
         stage('Testing') {
