@@ -33,6 +33,7 @@ pipeline {
 			    
 			   Process proc = Runtime.getRuntime().exec("git log -1 --pretty=%B");                        
 			   proc.waitFor();
+			    echo "$proc"
 
 		    }
             }
@@ -43,7 +44,7 @@ pipeline {
 		
 		when { 
 			
-			expression { "$p" == 'build' }
+			expression { "$proc" == 'build' }
 		}
             steps {
                 echo 'Deploying...'
