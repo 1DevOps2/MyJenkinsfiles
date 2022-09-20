@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-  		RELEASE_NOTES = sh (script: """git log -1 --pretty=%B""",  returnStdout:true)
+  		RELEASE_NOTES = sh (script: """--pretty=format:"%s"""",  returnStdout:true)
 		IAM_COMMIT = 'build' 
 }
     stages {
