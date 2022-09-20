@@ -23,13 +23,11 @@ pipeline {
             }
         }
 	    
-	    
-	    
 	
    
         stage('Deploy') {
 		
-		when { expression { "${RELEASE_NOTES}" == 'false' } }
+		when { expression { "${RELEASE_NOTES}" == 'build' } }
             steps {
                 echo 'Deploying...'
             }
