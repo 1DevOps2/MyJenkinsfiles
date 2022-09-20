@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-  RELEASE_NOTES = sh (script: """git log -1 --pretty=%B""", returnStdout:true)
+  RELEASE_NOTES = sh (script: """git log -1 --pretty=%B""")
    
 }
     stages {
@@ -11,7 +11,7 @@ pipeline {
 		res=$(git log -1 --pretty=%B)
                      if echo "$res" | grep -i ^build$; then
                       echo "Commit Matched -->  build=$res"
-                      
+                    echo "release note: $RELEASE_NOTES"  
                    else
                       echo "Commit not Matched -->  build=$res"
                       echo $res
@@ -19,6 +19,8 @@ pipeline {
                       exit 1
                       
                    fi
+		   
+		   
 		'''
             }
         }
