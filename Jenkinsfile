@@ -32,7 +32,7 @@ pipeline {
 		    script {
 			    
 			    proc = run.exec("git log -1 --pretty=%B");                        
-			   proc.waitFor();
+			 
 			    echo "$proc"
 
 		    }
