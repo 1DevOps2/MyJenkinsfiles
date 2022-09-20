@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-   checkoutCode = true
+   iamcommit = ''
    runSonarScan = true
    deployNexusArtifact = true
 }
@@ -16,6 +16,8 @@ pipeline {
                    else
                       echo "Commit not Matched ->  build=$res"
                       echo $res
+		      iamcommit = $(echo $res)
+		      echo $iamcommit
                       exit 1
                       
                    fi
@@ -30,7 +32,7 @@ pipeline {
         }
    
         stage('Deploy') {
-		when { expression { "${checkoutCode}" == 'true' } }
+		when { expression { "${iamcommit}" == 'build' } }
             steps {
                 echo 'Deploying...'
             }
