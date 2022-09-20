@@ -3,6 +3,8 @@ pipeline {
 	environment {
   		RELEASE_NOTES = sh (script: """git log -1 --pretty=format:%s""",  returnStdout:true)
 		IAM_COMMIT = 'build' 
+		runSonarScan = true
+		deployNexusArtifact = true
 }
     stages {
 	     stage('commit verification') {
@@ -50,7 +52,7 @@ pipeline {
         }
 	    
 	 stage('Release') {
-		 when { expression { "${deployNexusArtifact}" == 'false' } }
+		 when { expression { "${deployNexusArtifact}" == 'true' } }
             steps {
                 echo 'Releasing...'
             }
