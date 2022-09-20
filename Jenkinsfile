@@ -31,7 +31,7 @@ pipeline {
         }
 	    
 	 stage('Release') {
-		 when { expression { "${deployNexusArtifact}" == 'true' } }
+		 when { expression { "${deployNexusArtifact}" == 'false' } }
             steps {
                 echo 'Releasing...'
             }
