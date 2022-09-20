@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
 		
 		when { 
-			expression { "${res}" == 'build' }
+			expression { "$res" == 'build' }
 		}
             steps {
                 echo 'Deploying...'
