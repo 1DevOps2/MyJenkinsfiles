@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+	environment {
+   checkoutCode = true
+   runSonarScan = true
+   deployNexusArtifact = true
+}
     stages {
         stage('Build') {
             steps {
@@ -9,12 +13,14 @@ pipeline {
         }
    
         stage('Deploy') {
+		when { expression { "${checkoutCode}" == 'true' } }
             steps {
                 echo 'Deploying...'
             }
         }
         
         stage('Testing') {
+		when { expression { "${runSonarScan}" == 'false' } }
             steps {
                 echo 'Testing...'
             }
@@ -28,6 +34,7 @@ pipeline {
         }
 	    
 	 stage('Release') {
+		 when { expression { "${deployNexusArtifact}" == 'true' } }
             steps {
                 echo 'Releasing...'
             }
