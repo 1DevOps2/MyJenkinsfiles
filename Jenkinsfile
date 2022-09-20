@@ -24,12 +24,24 @@ pipeline {
             }
         }
 	    
+	    
+	    
+	     stage('GEt Tag') {
+		
+            steps {
+		    script {
+			    p = Runtime.getRuntime().exec("git log -1 --pretty=%B");
+                		echo '$p'
+		    }
+            }
+        }
      
    
         stage('Deploy') {
 		
 		when { 
-			expression { "$res" == 'build' }
+			
+			expression { "$p" == 'build' }
 		}
             steps {
                 echo 'Deploying...'
