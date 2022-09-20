@@ -27,7 +27,7 @@ pipeline {
    
         stage('Deploy') {
 		
-		when { expression { "${RELEASE_NOTES}" == 'build' } }
+		when { expression { "$RELEASE_NOTES" == 'build' } }
             steps {
                 echo 'Deploying...'
             }
