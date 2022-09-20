@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-  RELEASE_NOTES = sh (script: """git log -1 --pretty=%B""")
+  RELEASE_NOTES = sh (script: """git log -1 --pretty=%B""",  returnStdout:true)
    
 }
     stages {
