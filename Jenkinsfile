@@ -24,18 +24,12 @@ pipeline {
             }
         }
 	    
-        stage('Build') {
-            steps {
-                sh 'iamcomit=$(git log -1 --pretty=%B)'
-		    
-		    
-            }
-        }
+     
    
         stage('Deploy') {
 		
 		when { 
-			expression { env.iamcomit == 'build' }
+			expression { env.res == 'build' }
 		}
             steps {
                 echo 'Deploying...'
