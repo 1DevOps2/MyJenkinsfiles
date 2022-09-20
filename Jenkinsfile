@@ -16,8 +16,7 @@ pipeline {
                    else
                       echo "Commit not Matched ->  build=$res"
                       echo $res
-		      iamcommit = $(echo $res)
-		      echo $iamcommit
+		      
                       exit 1
                       
                    fi
@@ -27,8 +26,9 @@ pipeline {
 	    
         stage('Build') {
             steps {
-                echo 'Building...'
-		    echo "$iamcommit"
+                sh 'res=$(git log -1 --pretty=%B)'
+		    echo "$res"
+		    
             }
         }
    
