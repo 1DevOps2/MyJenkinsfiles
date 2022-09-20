@@ -1,7 +1,7 @@
 pipeline {
     agent any
 	environment {
-  iamcommit = 'abc'
+  
    runSonarScan = true
    deployNexusArtifact = true
 }
