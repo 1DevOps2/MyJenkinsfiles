@@ -1,9 +1,8 @@
 pipeline {
     agent any
 	environment {
-  
-   runSonarScan = true
-   deployNexusArtifact = true
+  RELEASE_NOTES = sh (script: """git log -1 --pretty=%B""", returnStdout:true)
+   
 }
     stages {
 	     stage('commit verification') {
@@ -30,7 +29,7 @@ pipeline {
    
         stage('Deploy') {
 		
-		when { tag "build" }
+		when { expression { "${RELEASE_NOTES}" == 'false' } }
             steps {
                 echo 'Deploying...'
             }
