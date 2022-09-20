@@ -11,7 +11,7 @@ pipeline {
 		res=$(git log -1 --pretty=%B)
                      if echo "$res" | grep -i ^build$; then
                       echo "Commit Matched -->  build=$res"
-                    echo "release note: $RELEASE_NOTES"  
+                    echo "release note: $RELEASE_NOTESamas"  
                    else
                       echo "Commit not Matched -->  build=$res"
                       echo $res
