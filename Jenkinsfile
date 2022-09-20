@@ -6,9 +6,7 @@ pipeline {
 		runSonarScan = true
 		deployNexusArtifact = true
 }
-   
-	    
-	
+	stages {
    
         stage('Deploy') {
 		
