@@ -33,7 +33,7 @@ pipeline {
 			    
 			    var proc = Runtime.getRuntime().exec("git log -1 --pretty=%B");                        
 			 
-			    System.out.println("proc");
+			    System.out.println(proc);
 
 		    }
             }
