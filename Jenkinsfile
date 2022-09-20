@@ -11,14 +11,13 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
 		res=$(git log -1 --pretty=%B)
-                     if echo "$res" | grep -i ^build$; then
+                     if echo "$res" | grep -i ^build_CBI$; then
                       echo "Commit Matched -->  build=$res"
                      
                    else
                       echo "Commit not Matched -->  build=$res"
                       echo $res
-		      
-                      exit 1
+	              exit 1
                       
                    fi
 		'''
@@ -29,7 +28,7 @@ pipeline {
    
         stage('Deploy') {
 		
-		when { expression { "${RELEASE_NOTES}" == "${IAM_COMMIT}" } }
+		when { expression { "${RELEASE_NOTES}" == 'build_CBI' } }
             steps {
                 echo 'Deploying...'
             }
