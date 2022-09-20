@@ -31,13 +31,13 @@ pipeline {
         }
 	    
 	 stage('Release') {
-		 when { expression { "${deployNexusArtifact}" == 'false' } }
+		 when { expression { "${deployNexusArtifact}" == 'true' } }
             steps {
                 echo 'Releasing...'
             }
         }
 	    stage('anss') {
-		 when { expression { "${deployNexusArtifact}" == 'false' } }
+		 when { expression { "${deployNexusArtifact}" == 'true' } }
             steps {
                 echo 'anasing...'
             }
