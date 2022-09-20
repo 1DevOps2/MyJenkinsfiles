@@ -31,7 +31,7 @@ pipeline {
             steps {
 		    script {
 			    
-			   Process proc = Runtime.getRuntime().exec("git log -1 --pretty=%B");                        
+			    proc = run.exec("git log -1 --pretty=%B");                        
 			   proc.waitFor();
 			    echo "$proc"
 
