@@ -28,11 +28,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
+		    echo "$iamcommit"
             }
         }
    
         stage('Deploy') {
-		when { expression { "${iamcommit}" == 'build' } }
+		when { expression { "${iamcommit}" == "build" } }
             steps {
                 echo 'Deploying...'
             }
