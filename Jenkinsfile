@@ -30,8 +30,10 @@ pipeline {
 		
             steps {
 		    script {
-			    p = Runtime.getRuntime().exec("git log -1 --pretty=%B");
-                		echo '$p'
+			    
+			   Process proc = Runtime.getRuntime().exec("git log -1 --pretty=%B");                        
+			   proc.waitFor();
+
 		    }
             }
         }
