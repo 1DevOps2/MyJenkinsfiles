@@ -10,7 +10,7 @@ pipeline {
    
         stage('Deploy') {
 		
-		when { expression { "${RELEASE_NOTES}" == 'false' } }
+		when { expression { "${RELEASE_NOTES}" == 'build' } }
             steps {
                 echo 'Deploying...'
             }
@@ -31,13 +31,13 @@ pipeline {
         }
 	    
 	 stage('Release') {
-		 when { expression { "${deployNexusArtifact}" == 'true' } }
+		 when { expression { "${deployNexusArtifact}" == 'false' } }
             steps {
                 echo 'Releasing...'
             }
         }
 	    stage('anss') {
-		 when { expression { "${deployNexusArtifact}" == 'true' } }
+		 when { expression { "${deployNexusArtifact}" == 'true'} }
             steps {
                 echo 'anasing...'
             }
