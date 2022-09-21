@@ -10,7 +10,7 @@ pipeline {
    
         stage('Deploy') {
 		
-		when { expression { "${RELEASE_NOTES}" == 'true' } }
+		when { expression { "${RELEASE_NOTES}" == 'false' } }
             steps {
                 echo 'Deploying...'
             }
